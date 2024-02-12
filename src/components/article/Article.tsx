@@ -1,8 +1,8 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
-import { ArticleData } from './types';
+import { ArticleConvertedData } from '../../services/articles.model';
 
-type Props = { data: ArticleData };
+type Props = { data: ArticleConvertedData };
 
 export const Article: React.FC<Props> = ({ data }) => 
     <View className="mb-5 bg-white shadow-lg">
@@ -18,6 +18,10 @@ export const Article: React.FC<Props> = ({ data }) =>
         <Text className="mb-5 text-xl font-openSans font-bold">{data.title}</Text>
         <Text className="text-base font-openSans">{data.content}</Text>
       </View>
-      <Image source={data.picUrl} className="w-full h-auto" />
+      <Image 
+        className="w-full min-h-[280px]"
+        source={{
+          uri: data.picUrl,
+        }} />
     </View>
   

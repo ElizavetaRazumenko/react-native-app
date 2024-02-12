@@ -1,0 +1,1 @@
+export const BASIC_URL = 'https://api.nytimes.com/svc/topstories/v2';
