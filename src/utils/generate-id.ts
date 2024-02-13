@@ -1,1 +1,0 @@
-export const generateID = ():string => `_${Math.random().toString(36)}`;

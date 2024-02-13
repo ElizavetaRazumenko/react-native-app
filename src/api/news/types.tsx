@@ -1,6 +1,6 @@
 export type ArticleResponseData = {
-  results: ArticleApiData[]
-}
+  results: ArticleApiData[];
+};
 
 type ArticleApiData = {
   subsection: string;
@@ -8,11 +8,11 @@ type ArticleApiData = {
   title: string;
   abstract: string;
   multimedia: Multimedia[];
-}
+};
 
 type Multimedia = {
   url: string;
-}
+};
 
 export type ArticleConvertedData = {
   id: string;
@@ -20,5 +20,5 @@ export type ArticleConvertedData = {
   date: string;
   title: string;
   content: string;
-  picUrl: string;
+  pictureUrl: string;
 };

@@ -1,14 +1,15 @@
-import { ArticleConvertedData, ArticleResponseData } from "../services/articles.model";
-import { formatDate } from "./format-date";
-import { generateID } from './generate-id';
+import uuid from 'react-native-uuid';
+import { ArticleConvertedData, ArticleResponseData } from '../api/news/types';
+import { formatDate } from './format-date';
 
-export const convertArticlesData = (data: ArticleResponseData): ArticleConvertedData[] => {
-  return data.results.map((result) => ({
-    id: generateID(),
-    category: result.subsection || "uncategorized",
+export const convertArticlesData = (
+  data: ArticleResponseData,
+): ArticleConvertedData[] =>
+  data.results.map((result) => ({
+    id: String(uuid.v4()),
+    category: result.subsection || 'uncategorized',
     date: formatDate(result.published_date),
     title: result.title,
     content: result.abstract,
-    picUrl: result.multimedia[0].url
-  }))
-}
+    pictureUrl: result.multimedia[0].url,
+  }));

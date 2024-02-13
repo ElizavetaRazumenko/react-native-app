@@ -1,10 +1,10 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
-import { ArticleData } from './types';
+import { ArticleConvertedData } from '../../../../api/news/types';
 
-type Props = { data: ArticleData };
+type Props = { data: ArticleConvertedData };
 
-export const Article: React.FC<Props> = ({ data }) => 
+export const Article: React.FC<Props> = ({ data }) => (
   <View className="mb-5 bg-white shadow-lg">
     <View className="container px-[15px] py-5">
       <View className="flex flex-row justify-between items-center mb-5">
@@ -18,5 +18,11 @@ export const Article: React.FC<Props> = ({ data }) =>
       <Text className="mb-5 text-xl font-openSans font-bold">{data.title}</Text>
       <Text className="text-base font-openSans">{data.content}</Text>
     </View>
-    <Image source={data.pictureUrl} className="w-full h-auto" />
+    <Image
+      className="w-full min-h-[280px]"
+      source={{
+        uri: data.pictureUrl,
+      }}
+    />
   </View>
+);
