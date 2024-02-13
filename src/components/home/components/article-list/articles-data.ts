@@ -36,4 +36,3 @@ export const ARTICLES_DATA = [
     pictureUrl: require('../../../../assets/articles-images/4.png'),
   },
 ];
-  

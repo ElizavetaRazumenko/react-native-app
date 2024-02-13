@@ -20,7 +20,3 @@ export const Article: React.FC<Props> = ({ data }) =>
     </View>
     <Image source={data.pictureUrl} className="w-full h-auto" />
   </View>
-  
-
-
-
