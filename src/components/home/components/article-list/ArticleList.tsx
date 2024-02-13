@@ -9,4 +9,4 @@ export const ArticleList: React.FC = () =>
     data={ARTICLES_DATA}
     renderItem={({item}) => <Article data={item} />}
     keyExtractor={item => item.id}
-   />
+  />
