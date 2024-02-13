@@ -1,4 +1,4 @@
-import { ArticleList } from "../article-list/ArticleList";
+import { ArticleList } from "./components/article-list/ArticleList";
 
 export const Home: React.FC = () => 
-    <ArticleList />
+  <ArticleList />

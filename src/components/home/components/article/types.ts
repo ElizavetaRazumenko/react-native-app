@@ -6,5 +6,5 @@ export type ArticleData = {
     date: string;
     title: string;
     content: string;
-    picUrl: ImageSourcePropType;
+    pictureUrl: ImageSourcePropType;
   };

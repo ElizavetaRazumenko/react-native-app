@@ -33,12 +33,6 @@ local.properties
 .cxx/
 *.keystore
 !debug.keystore
-/android/build/
-/android/app/build/
-
-# ios
-/ios/build/ 
-/ios/*.xcworkspace
 
 # node.js
 #
@@ -63,7 +57,6 @@ yarn-error.log
 
 # Ruby / CocoaPods
 /ios/Pods/
-/ios/Podfile.lock
 /vendor/bundle/
 
 # Temporary files created by Metro to check the health of the file watcher
@@ -71,8 +64,3 @@ yarn-error.log
 
 # testing
 /coverage
-
-package-lock.json
-
-
-
