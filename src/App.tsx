@@ -1,7 +1,7 @@
-import { SafeAreaView } from 'react-native';
+import { View } from 'react-native';
 import { Home } from './components/home/Home';
 
 export const App: React.FC = () => 
-  <SafeAreaView>
+  <View>
     <Home />
-  </SafeAreaView>
+  </View>
