@@ -13,7 +13,9 @@ const months = [
   'December',
 ];
 
-export const formatDate = (dateString: string): string => {
+// return May 30, 2024, 11:45
+
+export const getFullDate = (dateString: string): string => {
   const date = new Date(dateString);
   const year = date.getFullYear();
   const month = months[date.getMonth()];

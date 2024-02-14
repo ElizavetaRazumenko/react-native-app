@@ -1,7 +1,7 @@
 import React from 'react';
 import { ActivityIndicator, FlatList, Text } from 'react-native';
-import { useNews } from '../../../../api/news/queries';
-import { Article } from '../article/Article';
+import { useNews } from 'src/api/news/queries';
+import { Article } from './components/article/Article';
 
 export const ArticleList: React.FC = () => {
   const { isPending, error, data } = useNews('arts');

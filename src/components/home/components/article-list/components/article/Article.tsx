@@ -1,8 +1,10 @@
 import React from 'react';
 import { View, Text, Image } from 'react-native';
-import { ArticleConvertedData } from '../../../../api/news/types';
+import { ArticleItem } from 'src/api/news/types';
 
-type Props = { data: ArticleConvertedData };
+type Props = {
+  data: ArticleItem;
+};
 
 export const Article: React.FC<Props> = ({ data }) => (
   <View className="mb-5 bg-white shadow-lg">

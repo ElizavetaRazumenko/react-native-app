@@ -1,8 +1,8 @@
-export type ArticleResponseData = {
-  results: ArticleApiData[];
+export type ArticleResponse = {
+  results: ArticleApi[];
 };
 
-type ArticleApiData = {
+type ArticleApi = {
   subsection: string;
   published_date: string;
   title: string;
@@ -14,7 +14,7 @@ type Multimedia = {
   url: string;
 };
 
-export type ArticleConvertedData = {
+export type ArticleItem = {
   id: string;
   category: string;
   date: string;

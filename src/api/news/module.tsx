@@ -1,9 +1,17 @@
-import { TOP_STORIES_PRODUCT_API_KEY } from '@env';
-import { BASIC_URL } from '../../constants/variables';
-import { convertArticlesData } from '../../utils/convert-articles-data';
-import { ArticleConvertedData } from './types';
+import { BASIC_URL, TOP_STORIES_API_KEY } from 'src/constants/variables';
+import { convertArticles } from './converter';
+import { ArticleItem } from './types';
 
-export const fetchNews = (section: string): Promise<ArticleConvertedData[]> =>
-  fetch(`${BASIC_URL}/${section}.json?api-key=${TOP_STORIES_PRODUCT_API_KEY}`)
-    .then((res) => res.json())
-    .then((newData) => convertArticlesData(newData));
+export const fetchNews = async (
+  section: string,
+): Promise<ArticleItem[] | undefined> => {
+  try {
+    const response = await fetch(
+      `${BASIC_URL}/${section}.json?api-key=${TOP_STORIES_API_KEY}`,
+    );
+    const newData = await response.json();
+    return convertArticles(newData);
+  } catch (error) {
+    console.error(`Fetch operation failed: ${error}`);
+  }
+};
