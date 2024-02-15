@@ -22,3 +22,8 @@ export type ArticleItem = {
   content: string;
   pictureUrl: string;
 };
+
+export type HttpErrorType = {
+  name: string;
+  message: string;
+};
