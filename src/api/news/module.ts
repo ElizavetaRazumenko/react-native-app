@@ -1,6 +1,6 @@
 import { BASIC_URL, TOP_STORIES_API_KEY } from 'src/constants/variables';
 import { convertArticles } from './converter';
-import { HttpError } from 'src/errors/http/HttpError';
+import { HttpError } from 'src/errors/http-error/HttpError';
 import { ArticleItem } from './types';
 
 export const fetchNews = async (
