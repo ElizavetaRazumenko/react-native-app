@@ -1,12 +1,24 @@
 import React from 'react';
-import { FlatList } from 'react-native';
-import { Article } from '../article/Article';
-import { ARTICLES_DATA } from './articles-data';
+import { ActivityIndicator, FlatList, Text } from 'react-native';
+import { useNews } from 'src/api/news/queries';
+import { Article } from './components/article/Article';
 
-export const ArticleList: React.FC = () => 
-  <FlatList
-    className="container"
-    data={ARTICLES_DATA}
-    renderItem={({item}) => <Article data={item} />}
-    keyExtractor={item => item.id}
-  />
+export const ArticleList: React.FC = () => {
+  const { isPending, error, data } = useNews('arts');
+
+  if (isPending) {
+    return <ActivityIndicator />;
+  }
+  if (error) {
+    return <Text>{`An error has occurred: ${error.message}`}</Text>;
+  }
+
+  return (
+    <FlatList
+      className="container"
+      data={data}
+      renderItem={({ item }) => <Article data={item} />}
+      keyExtractor={(item) => item.id}
+    />
+  );
+};
