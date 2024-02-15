@@ -13,7 +13,7 @@ const months = [
   'December',
 ];
 
-// return May 30, 2024, 11:45
+//return May 30, 2024, 11:45
 
 export const getFullDate = (dateString: string): string => {
   const date = new Date(dateString);
