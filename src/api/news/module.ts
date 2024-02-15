@@ -3,9 +3,10 @@ import { convertArticles } from './converter';
 import { ArticleItem, HttpErrorType } from './types';
 
 class HttpError extends Error implements HttpErrorType {
-  constructor(public name: string, message: string) {
+  constructor(message: string, public name: string, public statusCode = -1) {
     super(message);
     this.name = name;
+    this.statusCode = statusCode;
   }
 }
 
@@ -20,12 +21,22 @@ export const fetchNews = async (
       const newData = await response.json();
       return convertArticles(newData);
     }
-    throw new Error(`Request failed with a status: ${response.status}`);
+
+    const errorMessage =
+      response.status < 500 ? 'Client error' : 'Server error';
+
+    throw new HttpError(
+      `Request failed with a status: ${response.status}`,
+      errorMessage,
+      response.status,
+    );
   } catch (error) {
-    if (error instanceof Error) {
-      throw error.message === 'Failed to fetch'
-        ? new HttpError('Network error', error.message)
-        : new HttpError('Server error', error.message);
+    if (error instanceof HttpError) {
+      throw error;
+    } else if (error instanceof Error && error.message === 'Failed to fetch') {
+      throw new HttpError('Network error', error.message);
+    } else {
+      throw new HttpError('Unknown error', 'Something went wrong');
     }
   }
 };
