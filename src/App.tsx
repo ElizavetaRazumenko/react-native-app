@@ -1,26 +1,30 @@
 import React from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { NavigationContainer } from '@react-navigation/native';
-import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { Home } from './components/home/Home';
-import { Details } from './components/details/Details';
-import { RootNativeStackParamList } from './types/types';
+// import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { PageStub } from './components/page-stub/PageStub';
+import { HomeNativeStackScreen } from './components/home-native-stack-screen/HomeNativeStackScreen';
+import { RootBottomTabParamList } from './navigation/types';
 
 const queryClient = new QueryClient();
 
-const Stack = createNativeStackNavigator<RootNativeStackParamList>();
+const RootTab = createBottomTabNavigator<RootBottomTabParamList>();
 
 export const App: React.FC = () => (
   <QueryClientProvider client={queryClient}>
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen
-          name="Home"
-          component={Home}
-          options={{ title: 'News' }}
+      <RootTab.Navigator initialRouteName="HomeNativeStackScreen">
+        <RootTab.Screen
+          name="HomeNativeStackScreen"
+          component={HomeNativeStackScreen}
+          options={{ headerShown: false }}
         />
-        <Stack.Screen name="Details" component={Details} />
-      </Stack.Navigator>
+        <RootTab.Screen name="World" component={PageStub} />
+        <RootTab.Screen name="Movables" component={PageStub} />
+        <RootTab.Screen name="Realty" component={PageStub} />
+        <RootTab.Screen name="Finance" component={PageStub} />
+      </RootTab.Navigator>
     </NavigationContainer>
   </QueryClientProvider>
 );
