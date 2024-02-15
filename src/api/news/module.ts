@@ -1,14 +1,7 @@
 import { BASIC_URL, TOP_STORIES_API_KEY } from 'src/constants/variables';
 import { convertArticles } from './converter';
-import { ArticleItem, HttpErrorType } from './types';
-
-class HttpError extends Error implements HttpErrorType {
-  constructor(message: string, public name: string, public statusCode = -1) {
-    super(message);
-    this.name = name;
-    this.statusCode = statusCode;
-  }
-}
+import { HttpError } from 'src/errors/http/HttpError';
+import { ArticleItem } from './types';
 
 export const fetchNews = async (
   section: string,
