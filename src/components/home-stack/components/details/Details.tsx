@@ -1,7 +1,8 @@
 import React from 'react';
-import { Image, Text, View } from 'react-native';
+import { Text, View } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { ArticleImage } from 'src/components/common/article-image/ArticleImage';
 import { ArticleMetadata } from 'src/components/common/article-metadata/ArticleMetadata';
 import { HomeNativeStackParamList } from 'src/navigation/types';
 
@@ -23,12 +24,7 @@ export const Details: React.FC<Props> = ({ route }) => {
   `}
     >
       <ArticleMetadata {...{ category: 'data.category', date: 'data.date' }} />
-      <Image
-        className="w-full min-h-[280px]"
-        source={{
-          uri: 'data.pictureUrl',
-        }}
-      />
+      <ArticleImage uri={'some uri'} />
       <Text>data.title</Text>
       <Text>data.content</Text>
     </View>

@@ -1,8 +1,8 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
-import { View, Text, Image, TouchableOpacity } from 'react-native';
-import FastImage from 'react-native-fast-image';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { ArticleMetadata } from 'src/components/common/article-metadata/ArticleMetadata';
+import { ArticleImage } from 'src/components/common/article-image/ArticleImage';
 import { ArticleItem } from 'src/api/news/types';
 
 type Props = {
@@ -31,13 +31,7 @@ export const Article: React.FC<Props> = ({ data }) => {
           </Text>
           <Text className="text-base font-openSans">{data.content}</Text>
         </View>
-        <FastImage
-          className="w-full min-h-[280px]"
-          source={{
-            uri: data.pictureUrl,
-            priority: FastImage.priority.high,
-          }}
-        />
+        <ArticleImage uri={data.pictureUrl} />
       </TouchableOpacity>
     </View>
   );
