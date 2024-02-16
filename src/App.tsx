@@ -3,10 +3,11 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { STUB_PAGES_NAMES } from './constants/variables';
 import { PageStub } from './components/page-stub/PageStub';
 import { HomeStack } from './components/home-stack/HomeStack';
-import { RootBottomTabParamList } from './navigation/types';
 import { TabIcon } from './components/common/tab-icon/TabIcon';
+import { RootBottomTabParamList } from './navigation/types';
 
 const queryClient = new QueryClient();
 
@@ -30,42 +31,17 @@ export const App: React.FC = () => (
               ),
             }}
           />
-          <Tab.Screen
-            name="World"
-            component={PageStub}
-            options={{
-              tabBarIcon: ({ focused }) => (
-                <TabIcon {...{ name: 'World', focused }} />
-              ),
-            }}
-          />
-          <Tab.Screen
-            name="Movables"
-            component={PageStub}
-            options={{
-              tabBarIcon: ({ focused }) => (
-                <TabIcon {...{ name: 'Movables', focused }} />
-              ),
-            }}
-          />
-          <Tab.Screen
-            name="Realty"
-            component={PageStub}
-            options={{
-              tabBarIcon: ({ focused }) => (
-                <TabIcon {...{ name: 'Realty', focused }} />
-              ),
-            }}
-          />
-          <Tab.Screen
-            name="Finance"
-            component={PageStub}
-            options={{
-              tabBarIcon: ({ focused }) => (
-                <TabIcon {...{ name: 'Finance', focused }} />
-              ),
-            }}
-          />
+          {STUB_PAGES_NAMES.map((pageName) => (
+            <Tab.Screen
+              name={pageName}
+              component={PageStub}
+              options={{
+                tabBarIcon: ({ focused }) => (
+                  <TabIcon {...{ name: pageName, focused }} />
+                ),
+              }}
+            />
+          ))}
         </Tab.Navigator>
       </NavigationContainer>
     </SafeAreaProvider>

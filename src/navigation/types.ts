@@ -6,13 +6,16 @@ declare global {
   }
 }
 
-export type RootBottomTabParamList = {
-  HomeStack: NavigatorScreenParams<HomeNativeStackParamList>;
-  World: undefined;
-  Movables: undefined;
-  Realty: undefined;
-  Finance: undefined;
-};
+type HomeStackType = Record<
+  'HomeStack',
+  NavigatorScreenParams<HomeNativeStackParamList>
+>;
+
+export type StubPageNames = 'World' | 'Movables' | 'Realty' | 'Finance';
+
+type StubPagesType = Record<StubPageNames, undefined>;
+
+export type RootBottomTabParamList = HomeStackType & StubPagesType;
 
 export type HomeNativeStackParamList = {
   Home: undefined;
