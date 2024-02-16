@@ -7,7 +7,6 @@ type Props = NativeStackScreenProps<HomeNativeStackParamList, 'Details'>;
 
 export const Details: React.FC<Props> = ({ route }) => {
   const id = route.params.articleId;
-  console.log(id);
   return (
     <View>
       <View className="flex flex-row justify-between items-center mb-5">

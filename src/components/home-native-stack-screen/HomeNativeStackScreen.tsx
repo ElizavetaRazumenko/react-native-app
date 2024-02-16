@@ -16,8 +16,11 @@ export const HomeNativeStackScreen: React.FC = () => (
     <HomeStack.Screen
       name="Details"
       component={Details}
-      options={{ title: 'Detail Name', headerBackTitle: 'Go back' }}
-      initialParams={{ articleId: '' }}
+      options={({ route }) => ({
+        title: route.params.name,
+        headerBackTitle: 'Go back',
+      })}
+      initialParams={{ articleId: '', name: '' }}
     />
   </HomeStack.Navigator>
 );

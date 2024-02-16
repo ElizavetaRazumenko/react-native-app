@@ -16,5 +16,5 @@ export type RootBottomTabParamList = {
 
 export type HomeNativeStackParamList = {
   Home: undefined;
-  Details: { articleId: string };
+  Details: { articleId: string; name: string };
 };
