@@ -7,7 +7,7 @@ declare global {
 }
 
 export type RootBottomTabParamList = {
-  HomeNativeStackScreen: NavigatorScreenParams<HomeNativeStackParamList>;
+  HomeStack: NavigatorScreenParams<HomeNativeStackParamList>;
   World: undefined;
   Movables: undefined;
   Realty: undefined;

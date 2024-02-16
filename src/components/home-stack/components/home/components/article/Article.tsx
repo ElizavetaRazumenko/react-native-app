@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { View, Text, Image, TouchableOpacity } from 'react-native';
+import FastImage from 'react-native-fast-image';
+import { ArticleMetadata } from 'src/components/common/article-metadata/ArticleMetadata';
 import { ArticleItem } from 'src/api/news/types';
 
 type Props = {
@@ -13,7 +15,7 @@ export const Article: React.FC<Props> = ({ data }) => {
     <View className="mb-5 bg-white shadow-lg">
       <TouchableOpacity
         onPress={() =>
-          navigate('HomeNativeStackScreen', {
+          navigate('HomeStack', {
             screen: 'Details',
             params: {
               articleId: '',
@@ -23,23 +25,17 @@ export const Article: React.FC<Props> = ({ data }) => {
         }
       >
         <View className="container px-[15px] py-5">
-          <View className="flex flex-row justify-between items-center mb-5">
-            <View className="bg-pink rounded">
-              <Text className="py-1 px-2 text-base text-white font-openSans">
-                {data.category}
-              </Text>
-            </View>
-            <Text className="text-sm font-openSans">{data.date}</Text>
-          </View>
+          <ArticleMetadata {...{ category: data.category, date: data.date }} />
           <Text className="mb-5 text-xl font-openSans font-bold">
             {data.title}
           </Text>
           <Text className="text-base font-openSans">{data.content}</Text>
         </View>
-        <Image
+        <FastImage
           className="w-full min-h-[280px]"
           source={{
             uri: data.pictureUrl,
+            priority: FastImage.priority.high,
           }}
         />
       </TouchableOpacity>

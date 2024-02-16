@@ -1,8 +1,9 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import { ArticleList } from './components/article-list/ArticleList';
 
-export const PageStub: React.FC = () => {
+export const Home: React.FC = () => {
   const insets = useSafeAreaInsets();
   return (
     <View
@@ -15,9 +16,9 @@ export const PageStub: React.FC = () => {
         pr-[${insets.right}px]
         pb-[${insets.bottom}px]
         pl-[${insets.left}px]
-  `}
+      `}
     >
-      <Text className="text-lg">Stub</Text>
+      <ArticleList />
     </View>
   );
 };

@@ -4,16 +4,12 @@ import { Home } from './components/home/Home';
 import { Details } from './components/details/Details';
 import { HomeNativeStackParamList } from 'src/navigation/types';
 
-const HomeStack = createNativeStackNavigator<HomeNativeStackParamList>();
+const Stack = createNativeStackNavigator<HomeNativeStackParamList>();
 
-export const HomeNativeStackScreen: React.FC = () => (
-  <HomeStack.Navigator initialRouteName="Home">
-    <HomeStack.Screen
-      name="Home"
-      component={Home}
-      options={{ title: 'News' }}
-    />
-    <HomeStack.Screen
+export const HomeStack: React.FC = () => (
+  <Stack.Navigator initialRouteName="Home">
+    <Stack.Screen name="Home" component={Home} options={{ title: 'News' }} />
+    <Stack.Screen
       name="Details"
       component={Details}
       options={({ route }) => ({
@@ -22,5 +18,5 @@ export const HomeNativeStackScreen: React.FC = () => (
       })}
       initialParams={{ articleId: '', name: '' }}
     />
-  </HomeStack.Navigator>
+  </Stack.Navigator>
 );
