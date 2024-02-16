@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { View, Text, TouchableOpacity } from 'react-native';
+import { HomeScreen, RootScreen } from 'src/constants/navigation';
 import { ArticleMetadata } from 'src/components/common/article-metadata/ArticleMetadata';
 import { ArticleImage } from 'src/components/common/article-image/ArticleImage';
 import { ArticleItem } from 'src/api/news/types';
@@ -15,8 +16,8 @@ export const Article: React.FC<Props> = ({ data }) => {
     <View className="mb-5 bg-white shadow-lg">
       <TouchableOpacity
         onPress={() =>
-          navigate('HomeStack', {
-            screen: 'Details',
+          navigate(RootScreen.HomeStack, {
+            screen: HomeScreen.Details,
             params: {
               articleId: '',
               name: 'News title',

@@ -1,4 +1,5 @@
 import type { NavigatorScreenParams } from '@react-navigation/native';
+import { RootScreen, HomeScreen } from 'src/constants/navigation';
 
 declare global {
   namespace ReactNavigation {
@@ -7,17 +8,21 @@ declare global {
 }
 
 type HomeStackType = Record<
-  'HomeStack',
+  RootScreen.HomeStack,
   NavigatorScreenParams<HomeNativeStackParamList>
 >;
 
-export type StubPageNames = 'World' | 'Movables' | 'Realty' | 'Finance';
+export type StubPageNames =
+  | RootScreen.World
+  | RootScreen.Movables
+  | RootScreen.Realty
+  | RootScreen.Finance;
 
 type StubPagesType = Record<StubPageNames, undefined>;
 
 export type RootBottomTabParamList = HomeStackType & StubPagesType;
 
 export type HomeNativeStackParamList = {
-  Home: undefined;
-  Details: { articleId: string; name: string };
+  [HomeScreen.Home]: undefined;
+  [HomeScreen.Details]: { articleId: string; name: string };
 };

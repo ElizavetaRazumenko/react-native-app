@@ -3,7 +3,8 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { STUB_PAGES_NAMES } from './constants/variables';
+import { RootScreen } from './constants/navigation';
+import { STUB_PAGES_NAMES } from './constants/navigation';
 import { PageStub } from './components/page-stub/PageStub';
 import { HomeStack } from './components/home-stack/HomeStack';
 import { TabIcon } from './components/common/tab-icon/TabIcon';
@@ -18,16 +19,16 @@ export const App: React.FC = () => (
     <SafeAreaProvider>
       <NavigationContainer>
         <Tab.Navigator
-          initialRouteName="HomeStack"
+          initialRouteName={RootScreen.HomeStack}
           screenOptions={{ tabBarLabel: '' }}
         >
           <Tab.Screen
-            name="HomeStack"
+            name={RootScreen.HomeStack}
             component={HomeStack}
             options={{
               headerShown: false,
               tabBarIcon: ({ focused }) => (
-                <TabIcon {...{ name: 'HomeStack', focused }} />
+                <TabIcon {...{ name: RootScreen.HomeStack, focused }} />
               ),
             }}
           />
