@@ -4,6 +4,7 @@ import { HomeScreen } from 'src/constants/navigation';
 import { Home } from './components/home/Home';
 import { Details } from './components/details/Details';
 import { HomeNativeStackParamList } from 'src/navigation/types';
+import { Image, Pressable } from 'react-native';
 
 const Stack = createNativeStackNavigator<HomeNativeStackParamList>();
 
@@ -17,11 +18,16 @@ export const HomeStack: React.FC = () => (
     <Stack.Screen
       name={HomeScreen.Details}
       component={Details}
-      options={({ route }) => ({
-        title: route.params.name,
-        headerBackTitle: 'Go back',
+      options={({ navigation }) => ({
+        headerLeft: () => (
+          <Pressable onPress={() => navigation.goBack()}>
+            <Image
+              source={require('../../assets/icons/arrow-back.png')}
+              className="w-auto h-3"
+            />
+          </Pressable>
+        ),
       })}
-      initialParams={{ articleId: '', name: '' }}
     />
   </Stack.Navigator>
 );

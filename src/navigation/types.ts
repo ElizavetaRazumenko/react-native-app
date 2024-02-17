@@ -24,5 +24,5 @@ export type RootBottomTabParamList = HomeStackType & StubPagesType;
 
 export type HomeNativeStackParamList = {
   [HomeScreen.Home]: undefined;
-  [HomeScreen.Details]: { articleId: string; name: string };
+  [HomeScreen.Details]: { articleId: string };
 };

@@ -20,7 +20,6 @@ export const Article: React.FC<Props> = ({ data }) => {
             screen: HomeScreen.Details,
             params: {
               articleId: '',
-              name: 'News title',
             },
           })
         }

@@ -9,7 +9,7 @@ type Props = {
 export const ArticleImage: React.FC<Props> = ({ uri }) => {
   const [isLoading, setLoading] = useState<boolean>(true);
   return (
-    <View className='container h-max flex justify-center'>
+    <View className="container h-max flex justify-center">
       <FastImage
         onLoadEnd={() => setLoading(false)}
         onLoadStart={() => setLoading(true)}
