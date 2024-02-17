@@ -1,7 +1,11 @@
-import { BASIC_URL, TOP_STORIES_API_KEY } from 'src/constants/variables';
-import { convertArticles } from './converter';
+import {
+  BASIC_URL,
+  SEARCH_URL,
+  TOP_STORIES_API_KEY,
+} from 'src/constants/variables';
+import { convertArticles, convertDetails } from './converter';
 import { HttpError } from 'src/errors/http-error/HttpError';
-import { ArticleItem } from './types';
+import { ArticleItem, DetailsItem } from './types';
 
 export const fetchNews = async (
   section: string,
@@ -34,15 +38,20 @@ export const fetchNews = async (
   }
 };
 
-export const searchArticle = async (query: string) => {
+export const searchArticleDetails = async (
+  query: string,
+): Promise<DetailsItem | null | undefined> => {
   try {
     const encodeQuery = encodeURIComponent(query);
     const response = await fetch(
-      `${BASIC_URL}/svc/search/v2/articlesearch.json?fq=${encodeQuery}&api-key=${TOP_STORIES_API_KEY}`,
+      `${SEARCH_URL}.json?fq=${encodeQuery}&api-key=${TOP_STORIES_API_KEY}`,
     );
     if (response.ok) {
       const newData = await response.json();
-      return convertArticles(newData);
+      if (newData.response?.docs?.length) {
+        return convertDetails(newData);
+      }
+      return null;
     }
 
     const errorMessage =

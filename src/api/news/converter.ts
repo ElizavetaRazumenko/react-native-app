@@ -1,5 +1,10 @@
 import uuid from 'react-native-uuid';
-import { ArticleItem, ArticleResponse } from './types';
+import {
+  ArticleItem,
+  ArticleResponse,
+  DetailsItem,
+  DetailsResponse,
+} from './types';
 import { getFullDate } from 'src/utils/date';
 
 export const convertArticles = (data: ArticleResponse): ArticleItem[] =>
@@ -11,3 +16,13 @@ export const convertArticles = (data: ArticleResponse): ArticleItem[] =>
     content: result.abstract,
     pictureUrl: result.multimedia[0].url,
   }));
+
+export const convertDetails = (data: DetailsResponse): DetailsItem => {
+  const details = data.response.docs[0];
+  return {
+    title: details.abstract,
+    snippet: details.snippet,
+    content: details.lead_paragraph,
+    source: details.source,
+  };
+};

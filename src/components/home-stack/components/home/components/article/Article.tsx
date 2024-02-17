@@ -19,7 +19,10 @@ export const Article: React.FC<Props> = ({ data }) => {
           navigate(RootScreen.HomeStack, {
             screen: HomeScreen.Details,
             params: {
-              articleId: '',
+              date: data.date,
+              category: data.category,
+              queryString: data.title,
+              pictureUrl: data.pictureUrl,
             },
           })
         }
