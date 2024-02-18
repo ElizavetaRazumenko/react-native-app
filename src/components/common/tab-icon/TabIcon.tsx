@@ -7,11 +7,9 @@ type Props = {
   focused: boolean;
 };
 
-export const TabIcon: React.FC<Props> = ({ name, focused }) => {
-  return (
-    <Image
-      source={focused ? ICONS[`${name}Active`] : ICONS[name]}
-      className={name === 'Movables' ? 'w-auto h-[17px]' : 'w-auto h-5'}
-    />
-  );
-};
+export const TabIcon: React.FC<Props> = ({ name, focused }) => (
+  <Image
+    source={focused ? ICONS[`${name}Active`] : ICONS[name]}
+    className={name === 'Movables' ? 'w-auto h-[17px]' : 'w-auto h-5'}
+  />
+);
