@@ -1,5 +1,6 @@
 import React from 'react';
 import { Image } from 'react-native';
+import { ICONS } from 'src/constants/icons';
 
 type Props = {
   name: string;
@@ -7,73 +8,10 @@ type Props = {
 };
 
 export const TabIcon: React.FC<Props> = ({ name, focused }) => {
-  switch (name) {
-    case 'HomeStack':
-      return focused ? (
-        <Image
-          source={require('../../../assets/icons/HomeStack-active.png')}
-          className="w-auto h-5"
-        />
-      ) : (
-        <Image
-          source={require('../../../assets/icons/HomeStack.png')}
-          className="w-auto h-5"
-        />
-      );
-
-    case 'World':
-      return focused ? (
-        <Image
-          source={require('../../../assets/icons/World-active.png')}
-          className="w-auto h-5"
-        />
-      ) : (
-        <Image
-          source={require('../../../assets/icons/World.png')}
-          className="w-auto h-5"
-        />
-      );
-
-    case 'Movables':
-      return focused ? (
-        <Image
-          source={require('../../../assets/icons/Movables-active.png')}
-          className="w-auto h-[17px]"
-        />
-      ) : (
-        <Image
-          source={require('../../../assets/icons/Movables.png')}
-          className="w-auto h-[17px]"
-        />
-      );
-
-    case 'Realty':
-      return focused ? (
-        <Image
-          source={require('../../../assets/icons/Realty-active.png')}
-          className="w-auto h-5"
-        />
-      ) : (
-        <Image
-          source={require('../../../assets/icons/Realty.png')}
-          className="w-auto h-5"
-        />
-      );
-
-    case 'Finance':
-      if (focused) {
-        return (
-          <Image
-            source={require('../../../assets/icons/Finance-active.png')}
-            className="w-auto h-5"
-          />
-        );
-      }
-      return (
-        <Image
-          source={require('../../../assets/icons/Finance.png')}
-          className="w-auto h-5"
-        />
-      );
-  }
+  return (
+    <Image
+      source={focused ? ICONS[`${name}Active`] : ICONS[name]}
+      className={name === 'Movables' ? 'w-auto h-[17px]' : 'w-auto h-5'}
+    />
+  );
 };
