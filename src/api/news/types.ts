@@ -22,3 +22,23 @@ export type ArticleItem = {
   content: string;
   pictureUrl: string;
 };
+
+export type DetailsResponse = {
+  response: {
+    docs: DetailsApi[];
+  };
+};
+
+type DetailsApi = {
+  abstract: string;
+  snippet: string;
+  lead_paragraph: string;
+  source: string;
+};
+
+export type DetailsItem = {
+  title: string;
+  snippet: string;
+  content: string;
+  source: string;
+};

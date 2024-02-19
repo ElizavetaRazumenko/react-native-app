@@ -3,10 +3,37 @@ module.exports = {
   extends: '@react-native',
   plugins: ['import'],
   rules: {
+    'padding-line-between-statements': [
+      'error',
+      { blankLine: 'always', prev: 'return', next: '*' },
+      { blankLine: 'always', prev: '*', next: 'return' },
+
+      { blankLine: 'always', prev: ['const', 'let', 'var'], next: '*' },
+      {
+        blankLine: 'any',
+        prev: ['const', 'let', 'var'],
+        next: ['const', 'let', 'var'],
+      },
+    ],
+    'import/order': [
+      'error',
+      {
+        groups: [
+          'builtin',
+          'external',
+          'internal',
+          'parent',
+          'sibling',
+          'index',
+          'object',
+        ],
+      },
+    ],
+
     'import/named': 'error',
-    indent: ['error', 2],
     'no-multi-spaces': 'error',
     'object-curly-spacing': ['error', 'always'],
+    'react/no-unstable-nested-components': 'off',
     'prettier/prettier': [
       'error',
       {
