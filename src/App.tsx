@@ -30,7 +30,7 @@ export const App: React.FC = () => (
               options={{
                 headerShown: false,
                 tabBarIcon: ({ focused }) => (
-                  <TabIcon {...{ name: RootScreen.HomeStack, focused }} />
+                  <TabIcon name={RootScreen.HomeStack} focused={focused} />
                 ),
               }}
             />
@@ -41,7 +41,7 @@ export const App: React.FC = () => (
                 component={PageStub}
                 options={{
                   tabBarIcon: ({ focused }) => (
-                    <TabIcon {...{ name: pageName, focused }} />
+                    <TabIcon name={pageName} focused={focused} />
                   ),
                 }}
               />
