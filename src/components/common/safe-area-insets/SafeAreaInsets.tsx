@@ -8,6 +8,7 @@ type Props = {
 
 export const SafeAreaInsets: React.FC<Props> = ({ children }) => {
   const insets = useSafeAreaInsets();
+
   return (
     <View
       className={`

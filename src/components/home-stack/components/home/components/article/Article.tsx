@@ -12,6 +12,7 @@ type Props = {
 
 export const Article: React.FC<Props> = ({ data }) => {
   const { navigate } = useNavigation();
+
   return (
     <View className="mb-5 bg-white shadow-lg">
       <TouchableOpacity
@@ -28,7 +29,7 @@ export const Article: React.FC<Props> = ({ data }) => {
         }
       >
         <View className="container px-[15px] py-5">
-          <ArticleMetadata {...{ category: data.category, date: data.date }} />
+          <ArticleMetadata category={data.category} date={data.date} />
           <Text className="mb-5 text-xl font-openSans font-bold">
             {data.title}
           </Text>

@@ -14,6 +14,7 @@ type Props = NativeStackScreenProps<
 
 export const Details: React.FC<Props> = ({ route }) => {
   const { date, category, queryString, pictureUrl } = route.params;
+
   const { isPending, error, data } = useDetails(queryString);
 
   if (isPending) {
@@ -32,7 +33,7 @@ export const Details: React.FC<Props> = ({ route }) => {
       {data ? (
         <>
           <View className="px-3.5">
-            <ArticleMetadata {...{ category: category, date: date }} />
+            <ArticleMetadata category={category} date={date} />
           </View>
           <ArticleImage uri={pictureUrl} />
           <View className="px-3.5">

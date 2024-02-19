@@ -1,10 +1,10 @@
 import React from 'react';
+import { Image, Pressable } from 'react-native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { HomeScreen } from 'src/constants/navigation';
+import { HomeNativeStackParamList } from 'src/navigation/types';
 import { Home } from './components/home/Home';
 import { Details } from './components/details/Details';
-import { HomeNativeStackParamList } from 'src/navigation/types';
-import { Image, Pressable } from 'react-native';
 
 const Stack = createNativeStackNavigator<HomeNativeStackParamList>();
 
