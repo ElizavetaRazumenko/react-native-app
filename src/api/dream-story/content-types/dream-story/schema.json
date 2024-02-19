@@ -4,7 +4,8 @@
   "info": {
     "singularName": "dream-story",
     "pluralName": "dream-stories",
-    "displayName": "Dream story"
+    "displayName": "Dream story",
+    "description": ""
   },
   "options": {
     "draftAndPublish": true
@@ -28,14 +29,18 @@
       "required": true
     },
     "image": {
+      "type": "media",
+      "multiple": false,
+      "required": true,
       "allowedTypes": [
         "images",
         "files",
         "videos",
         "audios"
-      ],
-      "type": "media",
-      "multiple": false,
+      ]
+    },
+    "snippet": {
+      "type": "string",
       "required": true
     }
   }

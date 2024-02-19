@@ -368,6 +368,7 @@ export interface ApiDreamStoryDreamStory extends Schema.CollectionType {
     singularName: 'dream-story';
     pluralName: 'dream-stories';
     displayName: 'Dream story';
+    description: '';
   };
   options: {
     draftAndPublish: true;
@@ -378,6 +379,7 @@ export interface ApiDreamStoryDreamStory extends Schema.CollectionType {
     date: Attribute.DateTime & Attribute.Required;
     category: Attribute.String & Attribute.Required;
     image: Attribute.Media & Attribute.Required;
+    snippet: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     publishedAt: Attribute.DateTime;
