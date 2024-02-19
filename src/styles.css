@@ -1,9 +1,0 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-@font-face {
-    font-family: 'openSansRegular';
-    src: url('./assets/fonts/OpenSans-Regular.ttf') format('truetype'); 
-  }
-
