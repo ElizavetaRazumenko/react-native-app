@@ -1,4 +1,4 @@
-import { API_BASE_URL, HOST } from '@env';
+import { HOST } from '@env';
 
-export const BASIC_URL = API_BASE_URL;
+export const BASIC_URL = `${HOST}/api/dream-stories`;
 export const HOST_ADDRESS = HOST;
