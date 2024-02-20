@@ -13,7 +13,7 @@ export const HomeStack: React.FC = () => (
     <Stack.Screen
       name={HomeScreen.Home}
       component={Home}
-      options={{ title: 'News' }}
+      options={{ title: 'Dream stories' }}
     />
     <Stack.Screen
       name={HomeScreen.Details}

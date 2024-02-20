@@ -2,15 +2,15 @@ import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { HomeScreen, RootScreen } from 'src/constants/navigation';
-import { ArticleMetadata } from 'src/components/common/article-metadata/ArticleMetadata';
-import { ArticleImage } from 'src/components/common/article-image/ArticleImage';
-import { ArticleItem } from 'src/api/news/types';
+import { StoryMetadata } from 'src/components/common/story-metadata/StoryMetadata';
+import { StoryImage } from 'src/components/common/story-image/StoryImage';
+import { StoryItem } from 'src/api/stories/types';
 
 type Props = {
-  data: ArticleItem;
+  data: StoryItem;
 };
 
-export const Article: React.FC<Props> = ({ data }) => {
+export const Story: React.FC<Props> = ({ data }) => {
   const { navigate } = useNavigation();
 
   return (
@@ -20,22 +20,19 @@ export const Article: React.FC<Props> = ({ data }) => {
           navigate(RootScreen.HomeStack, {
             screen: HomeScreen.Details,
             params: {
-              date: data.date,
-              category: data.category,
-              queryString: data.title,
-              pictureUrl: data.pictureUrl,
+              id: data.id,
             },
           })
         }
       >
         <View className="container px-[15px] py-5">
-          <ArticleMetadata category={data.category} date={data.date} />
+          <StoryMetadata category={data.category} date={data.date} />
           <Text className="mb-5 text-xl font-openSans font-bold">
             {data.title}
           </Text>
-          <Text className="text-base font-openSans">{data.content}</Text>
+          <Text className="text-base font-openSans">{data.snippet}</Text>
         </View>
-        <ArticleImage uri={data.pictureUrl} />
+        <StoryImage uri={data.pictureUrl} />
       </TouchableOpacity>
     </View>
   );

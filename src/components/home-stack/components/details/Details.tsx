@@ -2,9 +2,9 @@ import React from 'react';
 import { ActivityIndicator, ScrollView, Text, View } from 'react-native';
 import type { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { HomeScreen } from 'src/constants/navigation';
-import { useDetails } from 'src/api/news/queries';
-import { ArticleImage } from 'src/components/common/article-image/ArticleImage';
-import { ArticleMetadata } from 'src/components/common/article-metadata/ArticleMetadata';
+import { useDetails } from 'src/api/stories/queries';
+import { StoryImage } from 'src/components/common/story-image/StoryImage';
+import { StoryMetadata } from 'src/components/common/story-metadata/StoryMetadata';
 import { HomeNativeStackParamList } from 'src/navigation/types';
 
 type Props = NativeStackScreenProps<
@@ -13,9 +13,9 @@ type Props = NativeStackScreenProps<
 >;
 
 export const Details: React.FC<Props> = ({ route }) => {
-  const { date, category, queryString, pictureUrl } = route.params;
+  const { id } = route.params;
 
-  const { isPending, error, data } = useDetails(queryString);
+  const { isPending, error, data } = useDetails(id);
 
   if (isPending) {
     return (
@@ -33,18 +33,16 @@ export const Details: React.FC<Props> = ({ route }) => {
       {data ? (
         <>
           <View className="px-3.5">
-            <ArticleMetadata category={category} date={date} />
+            <StoryMetadata category={data.category} date={data.date} />
           </View>
-          <ArticleImage uri={pictureUrl} />
+          <StoryImage uri={data.pictureUrl} />
           <View className="px-3.5">
             <Text className="mt-5 mb-4 text-[28px] font-openSans font-bold">
               {data.title}
             </Text>
-            <Text className="mb-10 italic font-openSans text-base">{`"${data.snippet}"`}</Text>
             <Text className="mb-10 font-openSans text-base">
               {data.content}
             </Text>
-            <Text className="mb-10 font-openSans text-base">{data.source}</Text>
           </View>
         </>
       ) : (

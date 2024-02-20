@@ -28,8 +28,5 @@ export type HomeNativeStackParamList = {
 };
 
 type DetailsScreenParam = {
-  date: string;
-  category: string;
-  queryString: string;
-  pictureUrl: string;
+  id: string;
 };
