@@ -11,6 +11,7 @@ export const fetchStories = async () => {
 
     return convertStories(newData);
   } catch (error) {
+    console.log(error);
     handleHttpError(error);
   }
 };
