@@ -67,3 +67,4 @@ yarn-error.log
 
 # DOTENV file
 .env
+node_modules
