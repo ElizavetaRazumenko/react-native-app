@@ -1,6 +1,9 @@
 import { HOST_ADDRESS } from 'src/constants/variables';
 import { getFullDate } from 'src/utils/date';
-import { StoriesResponse, DetailsResponse } from './types';
+import { StoriesResponse, DetailsResponse, Imagedata } from './types';
+
+const convertPicturesUrl = (urls: Imagedata[]) =>
+  urls.map((url) => `${HOST_ADDRESS}${url.attributes.url}`);
 
 export const convertStories = (data: StoriesResponse) =>
   data.data.map((result) => ({
@@ -10,7 +13,7 @@ export const convertStories = (data: StoriesResponse) =>
     title: result.attributes.title,
     snippet: result.attributes.snippet,
     content: result.attributes.content,
-    pictureUrl: `${HOST_ADDRESS}${result.attributes.image.data.attributes.url}`,
+    picturesUrl: convertPicturesUrl(result.attributes.image.data),
   }));
 
 export const convertDetails = (data: DetailsResponse) => {
@@ -23,6 +26,6 @@ export const convertDetails = (data: DetailsResponse) => {
     title: details.attributes.title,
     snippet: details.attributes.snippet,
     content: details.attributes.content,
-    pictureUrl: `${HOST_ADDRESS}${details.attributes.image.data.attributes.url}`,
+    picturesUrl: convertPicturesUrl(details.attributes.image.data),
   };
 };

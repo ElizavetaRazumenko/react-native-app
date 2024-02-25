@@ -35,7 +35,7 @@ export const Details: React.FC<Props> = ({ route }) => {
           <View className="px-3.5">
             <StoryMetadata category={data.category} date={data.date} />
           </View>
-          <StoryImage uri={data.pictureUrl} />
+          <StoryImage uri={data.picturesUrl[0]} />
           <View className="px-3.5">
             <Text className="mt-5 mb-4 text-[28px] font-openSans font-bold">
               {data.title}

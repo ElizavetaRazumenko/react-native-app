@@ -10,15 +10,15 @@ type StoryApi = {
     title: string;
     snippet: string;
     content: string;
-    image: Imagedata;
+    image: {
+      data: Imagedata[];
+    };
   };
 };
 
-type Imagedata = {
-  data: {
-    attributes: {
-      url: string;
-    };
+export type Imagedata = {
+  attributes: {
+    url: string;
   };
 };
 
@@ -29,7 +29,7 @@ export type StoryItem = {
   title: string;
   snippet: string;
   content: string;
-  pictureUrl: string;
+  picturesUrl: string[];
 };
 
 export type DetailsResponse = {
