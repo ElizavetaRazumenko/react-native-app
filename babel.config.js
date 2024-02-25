@@ -3,6 +3,7 @@ module.exports = {
   plugins: [
     'nativewind/babel',
     'module:react-native-dotenv',
+    'react-native-reanimated/plugin',
     [
       'module-resolver',
       {
