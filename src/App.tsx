@@ -4,6 +4,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import * as Sentry from '@sentry/react-native';
 import { RootScreen } from './constants/navigation';
 import { STUB_PAGES_NAMES } from './constants/navigation';
 import { SafeAreaInsets } from './components/common/safe-area-insets/SafeAreaInsets';
@@ -11,6 +12,10 @@ import { PageStub } from './components/page-stub/PageStub';
 import { HomeStack } from './components/home-stack/HomeStack';
 import { TabIcon } from './components/common/tab-icon/TabIcon';
 import { RootBottomTabParamList } from './navigation/types';
+
+Sentry.init({
+  dsn: 'https://3a8b70353f1947e4ed85aef673861160@o4506814390861824.ingest.sentry.io/4506814500438016',
+});
 
 const queryClient = new QueryClient();
 
