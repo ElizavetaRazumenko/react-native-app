@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import * as Sentry from '@sentry/react-native';
+import * as amplitude from '@amplitude/analytics-react-native';
 import { RootScreen } from './constants/navigation';
 import { STUB_PAGES_NAMES } from './constants/navigation';
 import { PageStub } from './components/page-stub/PageStub';
@@ -15,6 +16,10 @@ import { RootBottomTabParamList } from './navigation/types';
 Sentry.init({
   dsn: 'https://3a8b70353f1947e4ed85aef673861160@o4506814390861824.ingest.sentry.io/4506814500438016',
 });
+
+amplitude.init('471e91b7970469e64dc1cb931272faa9');
+amplitude.track('Press');
+amplitude.track('Scroll');
 
 const queryClient = new QueryClient();
 
