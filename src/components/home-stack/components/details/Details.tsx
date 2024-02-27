@@ -6,6 +6,8 @@ import { useDetails } from 'src/api/stories/queries';
 import { StoryMetadata } from 'src/components/common/story-metadata/StoryMetadata';
 import { HomeNativeStackParamList } from 'src/navigation/types';
 import { ImageCarousel } from 'src/components/common/image-carousel/ImageCarousel';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaInsets } from 'src/components/common/safe-area-insets/SafeAreaInsets';
 
 type Props = NativeStackScreenProps<
   HomeNativeStackParamList,
@@ -31,25 +33,29 @@ export const Details: React.FC<Props> = ({ route }) => {
   }
 
   return (
-    <ScrollView className="container py-5 bg-white">
-      {data ? (
-        <>
-          <View className="px-3.5">
-            <StoryMetadata category={data.category} date={data.date} />
-          </View>
-          <ImageCarousel picturesUrl={data.picturesUrl} />
-          <View className="px-3.5">
-            <Text className="mt-5 mb-4 text-[28px] font-openSans font-bold">
-              {data.title}
-            </Text>
-            <Text className="mb-10 font-openSans text-base">
-              {data.content}
-            </Text>
-          </View>
-        </>
-      ) : (
-        <Text>No results were found for your request</Text>
-      )}
-    </ScrollView>
+    <SafeAreaProvider>
+      <SafeAreaInsets>
+        <ScrollView className="container py-5 bg-white">
+          {data ? (
+            <>
+              <View className="px-3.5">
+                <StoryMetadata category={data.category} date={data.date} />
+              </View>
+              <ImageCarousel picturesUrl={data.picturesUrl} />
+              <View className="px-3.5">
+                <Text className="mt-5 mb-4 text-[28px] font-openSans font-bold">
+                  {data.title}
+                </Text>
+                <Text className="mb-10 font-openSans text-base">
+                  {data.content}
+                </Text>
+              </View>
+            </>
+          ) : (
+            <Text>No results were found for your request</Text>
+          )}
+        </ScrollView>
+      </SafeAreaInsets>
+    </SafeAreaProvider>
   );
 };

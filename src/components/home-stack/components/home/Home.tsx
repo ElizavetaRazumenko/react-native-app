@@ -1,11 +1,17 @@
 import React from 'react';
 import { View } from 'react-native';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
+import { SafeAreaInsets } from 'src/components/common/safe-area-insets/SafeAreaInsets';
 import { StoryList } from './components/story-list/StoryList';
 
 export const Home: React.FC = () => {
   return (
-    <View className="h-screen flex items-center justify-center">
-      <StoryList />
-    </View>
+    <SafeAreaProvider>
+      <SafeAreaInsets>
+        <View className="h-screen flex items-center justify-center">
+          <StoryList />
+        </View>
+      </SafeAreaInsets>
+    </SafeAreaProvider>
   );
 };

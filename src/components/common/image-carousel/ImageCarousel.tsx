@@ -18,10 +18,8 @@ export const ImageCarousel: React.FC<Props> = ({ picturesUrl }) => {
         loop
         width={windowWidth}
         height={280}
-        autoPlay={true}
         defaultScrollOffsetValue={scrollOffsetValue}
         data={picturesUrl}
-        scrollAnimationDuration={1000}
         renderItem={({ item }) => <StoryImage uri={item} />}
       />
     </View>
