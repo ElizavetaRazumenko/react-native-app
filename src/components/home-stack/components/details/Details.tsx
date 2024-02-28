@@ -9,7 +9,7 @@ import { ImageCarousel } from 'src/components/common/image-carousel/ImageCarouse
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { SafeAreaInsets } from 'src/components/common/safe-area-insets/SafeAreaInsets';
 
-type Props = NativeStackScreenProps<
+export type Props = NativeStackScreenProps<
   HomeNativeStackParamList,
   HomeScreen.Details
 >;
@@ -19,12 +19,11 @@ export const Details: React.FC<Props> = ({ route }) => {
 
   const { isPending, error, data } = useDetails(id);
 
-  console.log(data?.title);
-
   if (isPending) {
     return (
       <View className="h-screen container flex items-center justify-center">
-        <ActivityIndicator />
+        <ActivityIndicator data-testid="loading-indicator" />
+        <Text>Please wait</Text>
       </View>
     );
   }
@@ -41,7 +40,10 @@ export const Details: React.FC<Props> = ({ route }) => {
               <View className="px-3.5">
                 <StoryMetadata category={data.category} date={data.date} />
               </View>
-              <ImageCarousel picturesUrl={data.picturesUrl} />
+              <ImageCarousel
+                picturesUrl={data.picturesUrl}
+                data-testid="image-carousel"
+              />
               <View className="px-3.5">
                 <Text className="mt-5 mb-4 text-[28px] font-openSans font-bold">
                   {data.title}

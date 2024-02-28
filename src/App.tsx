@@ -12,12 +12,13 @@ import { PageStub } from './components/page-stub/PageStub';
 import { HomeStack } from './components/home-stack/HomeStack';
 import { TabIcon } from './components/common/tab-icon/TabIcon';
 import { RootBottomTabParamList } from './navigation/types';
+import { AMPLITUDE_API_KEY, DSN_URL } from './constants/variables';
 
 Sentry.init({
-  dsn: 'https://3a8b70353f1947e4ed85aef673861160@o4506814390861824.ingest.sentry.io/4506814500438016',
+  dsn: DSN_URL,
 });
 
-amplitude.init('471e91b7970469e64dc1cb931272faa9');
+amplitude.init(AMPLITUDE_API_KEY);
 amplitude.track('Press');
 amplitude.track('Scroll');
 
