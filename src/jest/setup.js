@@ -1,6 +1,8 @@
-// include this line for mocking react-native-gesture-handler
 import 'react-native-gesture-handler/jestSetup';
 import '@testing-library/jest-native/extend-expect';
+import mockSafeAreaContext from 'react-native-safe-area-context/jest/mock';
+
+jest.mock('react-native-safe-area-context', () => mockSafeAreaContext);
 
 // include this section and the NativeAnimatedHelper section for mocking react-native-reanimated
 jest.mock('react-native-reanimated', () => {

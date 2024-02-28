@@ -22,7 +22,7 @@ export const Details: React.FC<Props> = ({ route }) => {
   if (isPending) {
     return (
       <View className="h-screen container flex items-center justify-center">
-        <ActivityIndicator data-testid="loading-indicator" />
+        <ActivityIndicator testID="loading-indicator" />
         <Text>Please wait</Text>
       </View>
     );
@@ -40,10 +40,7 @@ export const Details: React.FC<Props> = ({ route }) => {
               <View className="px-3.5">
                 <StoryMetadata category={data.category} date={data.date} />
               </View>
-              <ImageCarousel
-                picturesUrl={data.picturesUrl}
-                data-testid="image-carousel"
-              />
+              <ImageCarousel picturesUrl={data.picturesUrl} />
               <View className="px-3.5">
                 <Text className="mt-5 mb-4 text-[28px] font-openSans font-bold">
                   {data.title}

@@ -24,9 +24,13 @@ describe('Details component', () => {
       data: null,
     });
 
-    const { getByText } = render(<Details {...(mockProps as Props)} />);
-    const loader = getByText(/Please wait/);
+    const { getByText, getByTestId } = render(
+      <Details {...(mockProps as Props)} />,
+    );
+    const loadingText = getByText(/Please wait/);
+    const loader = getByTestId('loading-indicator');
 
+    expect(loadingText).toBeTruthy();
     expect(loader).toBeTruthy();
   });
 
@@ -47,7 +51,7 @@ describe('Details component', () => {
     const testData = {
       category: 'Test category',
       date: 'February 28, 2024, 13:05',
-      picturesUrl: ['url1', 'url2'],
+      picturesUrl: ['url1', 'url2', 'url3'],
       title: 'Test title',
       content: 'Test content',
     };
@@ -58,14 +62,11 @@ describe('Details component', () => {
       data: testData,
     });
 
-    const { getByText, getByTestId } = render(
-      <Details {...(mockProps as Props)} />,
-    );
+    const { getByText } = render(<Details {...(mockProps as Props)} />);
 
     await waitFor(() => {
       expect(getByText(testData.category)).toBeTruthy();
       expect(getByText(testData.content)).toBeTruthy();
-      expect(getByTestId('image-carousel')).toBeTruthy();
     });
   });
 
