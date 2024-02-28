@@ -1,24 +1,35 @@
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import React from 'react';
+import { View } from 'react-native';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import * as Sentry from '@sentry/react-native';
+import * as amplitude from '@amplitude/analytics-react-native';
 import { RootScreen } from './constants/navigation';
 import { STUB_PAGES_NAMES } from './constants/navigation';
-import { SafeAreaInsets } from './components/common/safe-area-insets/SafeAreaInsets';
 import { PageStub } from './components/page-stub/PageStub';
 import { HomeStack } from './components/home-stack/HomeStack';
 import { TabIcon } from './components/common/tab-icon/TabIcon';
 import { RootBottomTabParamList } from './navigation/types';
+import { AMPLITUDE_API_KEY, DSN_URL } from './constants/variables';
+
+Sentry.init({
+  dsn: DSN_URL,
+});
+
+amplitude.init(AMPLITUDE_API_KEY);
+amplitude.track('Press');
+amplitude.track('Scroll');
 
 const queryClient = new QueryClient();
 
 const Tab = createBottomTabNavigator<RootBottomTabParamList>();
 
 export const App: React.FC = () => (
-  <QueryClientProvider client={queryClient}>
-    <SafeAreaProvider>
-      <SafeAreaInsets>
+  <GestureHandlerRootView>
+    <QueryClientProvider client={queryClient}>
+      <View className="container h-screen">
         <NavigationContainer>
           <Tab.Navigator
             initialRouteName={RootScreen.HomeStack}
@@ -48,7 +59,7 @@ export const App: React.FC = () => (
             ))}
           </Tab.Navigator>
         </NavigationContainer>
-      </SafeAreaInsets>
-    </SafeAreaProvider>
-  </QueryClientProvider>
+      </View>
+    </QueryClientProvider>
+  </GestureHandlerRootView>
 );

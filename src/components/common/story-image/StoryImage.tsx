@@ -6,7 +6,7 @@ type Props = {
   uri: string;
 };
 
-export const ArticleImage: React.FC<Props> = ({ uri }) => {
+export const StoryImage: React.FC<Props> = ({ uri }) => {
   const [isLoading, setLoading] = useState<boolean>(true);
 
   return (
