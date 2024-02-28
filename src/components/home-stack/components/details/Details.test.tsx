@@ -24,13 +24,9 @@ describe('Details component', () => {
       data: null,
     });
 
-    const { getByText, getByTestId } = render(
-      <Details {...(mockProps as Props)} />,
-    );
-    const loadingText = getByText(/Please wait/);
+    const { getByTestId } = render(<Details {...(mockProps as Props)} />);
     const loader = getByTestId('loading-indicator');
 
-    expect(loadingText).toBeTruthy();
     expect(loader).toBeTruthy();
   });
 

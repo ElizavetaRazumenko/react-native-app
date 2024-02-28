@@ -16,6 +16,7 @@ export const Story: React.FC<Props> = ({ data }) => {
   return (
     <View className="mb-5 bg-white shadow-lg">
       <TouchableOpacity
+        testID="story-touchable"
         onPress={() =>
           navigate(RootScreen.HomeStack, {
             screen: HomeScreen.Details,

@@ -7,7 +7,7 @@ export const StoryList: React.FC = () => {
   const { isPending, error, data } = useStories();
 
   if (isPending) {
-    return <ActivityIndicator />;
+    return <ActivityIndicator testID="loading-indicator" />;
   }
   if (error) {
     return <Text>{`An error has occurred: ${error.message}`}</Text>;
@@ -15,6 +15,7 @@ export const StoryList: React.FC = () => {
 
   return (
     <FlatList
+      testID="stories-list"
       className="container"
       data={data}
       renderItem={({ item }) => <Story data={item} />}

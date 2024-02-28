@@ -37,6 +37,7 @@ module.exports = {
     'no-multi-spaces': 'error',
     'object-curly-spacing': ['error', 'always'],
     'react/no-unstable-nested-components': 'off',
+    'react/react-in-jsx-scope': 'off',
     'prettier/prettier': [
       'error',
       {

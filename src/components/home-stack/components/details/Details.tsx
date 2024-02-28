@@ -23,7 +23,6 @@ export const Details: React.FC<Props> = ({ route }) => {
     return (
       <View className="h-screen container flex items-center justify-center">
         <ActivityIndicator testID="loading-indicator" />
-        <Text>Please wait</Text>
       </View>
     );
   }
