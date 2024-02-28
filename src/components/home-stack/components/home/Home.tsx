@@ -8,7 +8,10 @@ export const Home: React.FC = () => {
   return (
     <SafeAreaProvider>
       <SafeAreaInsets>
-        <View className="h-screen flex items-center justify-center">
+        <View
+          className="h-screen flex items-center justify-center"
+          testID="story-view"
+        >
           <StoryList />
         </View>
       </SafeAreaInsets>
