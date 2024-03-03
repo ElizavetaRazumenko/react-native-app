@@ -66,7 +66,7 @@ describe('Details component', () => {
     });
   });
 
-  it('renders "No results" message when there is no data', () => {
+  it('renders "No results" message when there is no data', async () => {
     (useDetails as jest.Mock).mockReturnValue({
       isPending: false,
       error: null,
@@ -74,8 +74,9 @@ describe('Details component', () => {
     });
 
     const { getByText } = render(<Details {...(mockProps as Props)} />);
-    const noResultsMessage = getByText(/No results were found/);
 
-    expect(noResultsMessage).toBeTruthy();
+    await waitFor(() => {
+      expect(getByText(/No results were found/)).toBeTruthy();
+    });
   });
 });

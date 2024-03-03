@@ -1,5 +1,5 @@
 import React from 'react';
-import { render, fireEvent } from '@testing-library/react-native';
+import { render, fireEvent, waitFor } from '@testing-library/react-native';
 import { useNavigation } from '@react-navigation/native';
 import { HomeScreen, RootScreen } from 'src/constants/navigation';
 import { Story } from './Story';
@@ -30,8 +30,12 @@ describe('Story component', () => {
     expect(getByText(mockData.snippet)).toBeTruthy();
   });
 
-  it('navigates to details screen when pressed',  () => {
+  it('navigates to details screen when pressed', async () => {
     const { getByTestId } = render(<Story data={mockData} />);
+
+    await waitFor(() => {
+      expect(getByTestId('story-touchable')).toBeTruthy();
+    });
 
     fireEvent.press(getByTestId('story-touchable'));
 

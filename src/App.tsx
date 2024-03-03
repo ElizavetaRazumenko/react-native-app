@@ -1,6 +1,7 @@
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import React from 'react';
 import { View } from 'react-native';
+import { NativeBaseProvider } from 'native-base';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
@@ -28,38 +29,40 @@ const Tab = createBottomTabNavigator<RootBottomTabParamList>();
 
 export const App: React.FC = () => (
   <GestureHandlerRootView>
-    <QueryClientProvider client={queryClient}>
-      <View className="container h-screen">
-        <NavigationContainer>
-          <Tab.Navigator
-            initialRouteName={RootScreen.HomeStack}
-            screenOptions={{ tabBarLabel: '' }}
-          >
-            <Tab.Screen
-              name={RootScreen.HomeStack}
-              component={HomeStack}
-              options={{
-                headerShown: false,
-                tabBarIcon: ({ focused }) => (
-                  <TabIcon name={RootScreen.HomeStack} focused={focused} />
-                ),
-              }}
-            />
-            {STUB_PAGES_NAMES.map((pageName) => (
+    <NativeBaseProvider>
+      <QueryClientProvider client={queryClient}>
+        <View className="container h-screen">
+          <NavigationContainer>
+            <Tab.Navigator
+              initialRouteName={RootScreen.HomeStack}
+              screenOptions={{ tabBarLabel: '' }}
+            >
               <Tab.Screen
-                name={pageName}
-                key={pageName}
-                component={PageStub}
+                name={RootScreen.HomeStack}
+                component={HomeStack}
                 options={{
+                  headerShown: false,
                   tabBarIcon: ({ focused }) => (
-                    <TabIcon name={pageName} focused={focused} />
+                    <TabIcon name={RootScreen.HomeStack} focused={focused} />
                   ),
                 }}
               />
-            ))}
-          </Tab.Navigator>
-        </NavigationContainer>
-      </View>
-    </QueryClientProvider>
+              {STUB_PAGES_NAMES.map((pageName) => (
+                <Tab.Screen
+                  name={pageName}
+                  key={pageName}
+                  component={PageStub}
+                  options={{
+                    tabBarIcon: ({ focused }) => (
+                      <TabIcon name={pageName} focused={focused} />
+                    ),
+                  }}
+                />
+              ))}
+            </Tab.Navigator>
+          </NavigationContainer>
+        </View>
+      </QueryClientProvider>
+    </NativeBaseProvider>
   </GestureHandlerRootView>
 );
