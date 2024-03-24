@@ -2,6 +2,9 @@ module.exports = {
   root: true,
   extends: '@react-native',
   plugins: ['import'],
+  env: {
+    jest: true,
+  },
   rules: {
     'padding-line-between-statements': [
       'error',
@@ -34,6 +37,7 @@ module.exports = {
     'no-multi-spaces': 'error',
     'object-curly-spacing': ['error', 'always'],
     'react/no-unstable-nested-components': 'off',
+    'react/react-in-jsx-scope': 'off',
     'prettier/prettier': [
       'error',
       {

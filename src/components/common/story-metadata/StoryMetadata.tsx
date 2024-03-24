@@ -6,7 +6,7 @@ type Props = {
   date: string;
 };
 
-export const ArticleMetadata: React.FC<Props> = ({ category, date }) => (
+export const StoryMetadata: React.FC<Props> = ({ category, date }) => (
   <View className="container flex flex-row justify-between items-center mb-5">
     <View className="bg-pink rounded">
       <Text className="py-1 px-2 text-base text-white font-openSans">

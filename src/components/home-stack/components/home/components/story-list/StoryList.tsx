@@ -1,13 +1,13 @@
 import React from 'react';
 import { ActivityIndicator, FlatList, Text } from 'react-native';
-import { useNews } from 'src/api/news/queries';
-import { Article } from '../article/Article';
+import { useStories } from 'src/api/stories/queries';
+import { Story } from '../story/Story';
 
-export const ArticleList: React.FC = () => {
-  const { isPending, error, data } = useNews('arts');
+export const StoryList: React.FC = () => {
+  const { isPending, error, data } = useStories();
 
   if (isPending) {
-    return <ActivityIndicator />;
+    return <ActivityIndicator testID="loading-indicator" />;
   }
   if (error) {
     return <Text>{`An error has occurred: ${error.message}`}</Text>;
@@ -15,9 +15,10 @@ export const ArticleList: React.FC = () => {
 
   return (
     <FlatList
+      testID="stories-list"
       className="container"
       data={data}
-      renderItem={({ item }) => <Article data={item} />}
+      renderItem={({ item }) => <Story data={item} />}
       keyExtractor={(item) => item.id}
     />
   );
